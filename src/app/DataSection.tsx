@@ -12,9 +12,8 @@ export default function DataSection() {
     (resource) => resource.format === "pdf"
   );
   return (
-    <div className="grid w-full max-w-[65rem] h-fit mx-auto md:p-4 gap-4 ">
-      <div className="flex flex-wrap gap-4 w-fit h-fit my-auto mx-auto">
-        <div className="grid w-fit h-auto mx-auto">
+    <div className="grid w-full max-w-[65rem] h-fit mx-auto p-4 md:p-8 gap-4 ">
+        <div className="grid w-fit h-auto mx-auto ">
           <TypographyH1 className="w-fit mx-auto text-[4rem] lg:text-[5rem] my-0 tracking-wide leading-none lg:leading-none text-center">
             {title}
           </TypographyH1>
@@ -46,6 +45,5 @@ margin:1em 0 1em;}`}
           </style>
         </div>
       </div>
-    </div>
   );
 }
