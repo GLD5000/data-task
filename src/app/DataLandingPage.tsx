@@ -1,7 +1,5 @@
-'use client';
+import DataSection from "./DataSection";
 
 export default function DataLandingPage() {
-  return (
-    <div>DataLandingPage</div>
-  )
+  return <DataSection />;
 }
