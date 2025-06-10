@@ -48,10 +48,6 @@ async function fetchJsonV2(
   setIsLoading: Dispatch<SetStateAction<boolean>>
 ): Promise<void> {
   try {
-    const request = {
-      method: "GET",
-      format: "pdf",
-    };
     const response = await fetch(`glaAsf.json`);
     const jsonData = await response.json();
 
