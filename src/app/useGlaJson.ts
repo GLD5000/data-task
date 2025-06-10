@@ -25,14 +25,24 @@ export async function fetchJson(
   setIsLoading: Dispatch<SetStateAction<boolean>>
 ): Promise<void> {
   try {
-    const request = {
-      method: "GET",
+    const params = {
       format: "pdf",
     };
-    const response = await fetch(
-      `https://data.london.gov.uk/api/dataset/gla-adult-skills-fund/`,
-      request
-    );
+
+    // Convert the parameters to a query string
+    const queryString = new URLSearchParams(params).toString();
+
+    // Combine the base URL with the query string
+    const baseUrl = `https://data.london.gov.uk/api/dataset/gla-adult-skills-fund/`;
+    const url = `${baseUrl}?${queryString}`;
+    const request = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    };
+    const response = await fetch(url, request);
     const jsonData = await response.json();
 
     setData(jsonData);
