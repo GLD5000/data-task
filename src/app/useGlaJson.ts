@@ -10,55 +10,22 @@ export default function useGlaJson(): {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetchJsonV2(setData, setIsLoading);
+    fetchJson(setData, setIsLoading);
   }, [setData, setIsLoading]);
 
   const refetch = (): void => {
-    fetchJsonV2(setData, setIsLoading);
+    fetchJson(setData, setIsLoading);
   };
 
   return { data, isLoading, refetch };
 }
 
-export async function fetchJson(
+async function fetchJson(
   setData: Dispatch<SetStateAction<GlaDataJson | null>>,
   setIsLoading: Dispatch<SetStateAction<boolean>>
 ): Promise<void> {
   try {
-    const params = {
-      format: "pdf",
-    };
-
-    // Convert the parameters to a query string
-    const queryString = new URLSearchParams(params).toString();
-
-    // Combine the base URL with the query string
-    const baseUrl = `https://data.london.gov.uk/api/dataset/gla-adult-skills-fund/`;
-    const url = `${baseUrl}?${queryString}`;
-    const request = {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    };
-    const response = await fetch(url, request);
-    const jsonData = await response.json();
-
-    setData(jsonData);
-  } catch (error) {
-    console.error("Error fetching JSON files:", error);
-  } finally {
-    setIsLoading(false);
-  }
-}
-
-async function fetchJsonV2(
-  setData: Dispatch<SetStateAction<GlaDataJson | null>>,
-  setIsLoading: Dispatch<SetStateAction<boolean>>
-): Promise<void> {
-  try {
-    const response = await fetch(`glaAsf.json`);
+    const response = await fetch(`/api/getGlaData/`);
     const jsonData = await response.json();
 
     setData(jsonData);
