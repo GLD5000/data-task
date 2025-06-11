@@ -16,7 +16,7 @@ export default function DataSection() {
   const { title, description, resources } = data;
   const pdfResources = Object.values(resources).filter(
     (resource) => resource.format === "pdf"
-  );
+  ).sort((a,b) => b.title.replaceAll(' ','').replace(/(GLAE AEB )|(GLA AEB )|(GLA[^\-]+\-[ ]?)/,'').localeCompare(a.title.replaceAll(' ','').replace(/(GLAE AEB )|(GLA AEB )|(GLA[^\-]+\-[ ]?)/,'')));
   return (
     <div className="grid w-full max-w-[65rem] h-fit mx-auto p-4 md:p-8 gap-4 ">
       <div className="grid w-fit h-auto mx-auto ">
