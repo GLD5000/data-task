@@ -18,8 +18,8 @@ export default function DataSection() {
     (resource) => resource.format === "pdf"
   ).sort((a,b) => b.title.replaceAll(' ','').replace(/(GLAE AEB )|(GLA AEB )|(GLA[^\-]+\-[ ]?)/,'').localeCompare(a.title.replaceAll(' ','').replace(/(GLAE AEB )|(GLA AEB )|(GLA[^\-]+\-[ ]?)/,'')));
   return (
-    <div className="grid w-full max-w-[65rem] h-fit mx-auto p-4 md:p-8 gap-4 ">
-      <div className="grid w-fit h-auto mx-auto ">
+    <div className="grid w-full max-w-[65rem] h-fit mx-auto p-4 md:p-8  ">
+      <div className="grid w-fit h-auto mx-auto gap-8 md:gap-[2em]">
         <TypographyH1 className="w-fit mx-auto text-[4rem] lg:text-[5rem] my-0 tracking-wide leading-none lg:leading-none text-center">
           {title}
         </TypographyH1>
